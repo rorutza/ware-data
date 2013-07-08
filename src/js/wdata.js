@@ -29,8 +29,8 @@ $(document).ready(function () {
 
     function makefield() {
         //input dupa id
-        inpid = $("#makeaut");
-        var theIndex = inpid.value;
+        var inpid = $("#makeaut");
+        var theIndex = inpid[0].value;
         if (console.log) {
             console.log('theIndex = ' + theIndex);
         }
@@ -51,7 +51,7 @@ $(document).ready(function () {
     };
 
 */
-    $("input").change(function () {
+    $("form").on("change","input",function () {
         var itemtype = this.className;
         var itemprop = this.name;
         var print = this.value;
