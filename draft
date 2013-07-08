@@ -1,0 +1,69 @@
+                <label id="name">Name : </label> <span itemprop="name" content="name"></span>
+                <label id="about">About : </label> <span id="about" itemprop="about" content="about"></span>
+                <label id="version">Version : </label>Version : <span itemprop="version" content="version"></span>
+                <label id="award">Award : </label><span itemprop="award" content="award"></span>
+                <label id="comment">Comment : </label><span itemprop="comment" content="comment"></span>
+                <label id="audio">Audio : </label>
+                <label id="video">Video : </label>
+                <label id="date">Date : </label><span itemprop="date" content="date"></span>
+
+Article:
+- name
+- about
+- version
+- author
+    Person:
+        - name
+        - email
+        - telephone
+        - url
+- comment
+- audio
+- video
+- date
+
+                <dl>
+                    <dt id = "name">Name :</dt>
+                    <dt id = "about">About :</dt>
+                    <dt id = "version">Version :</dt>
+                    <dt id = "author">Author :</dt>
+                    <dt id = "comment">Comment :</dt>
+                    <dt id = "audio">Audio :</dt>
+                    <dt id = "video">Video :</dt>
+                    <dt id = "date">Date :</dt>
+
+                </dl>
+
+                  <div itemprop="director" itemscope itemtype="http://schema.org/Person">
+
+                             <dt id = "name">Name :</dt>
+                              <dt id = "about">About :</dt>
+                              <dt id = "version">Version :</dt>
+                              <dt id = "author">Author :</dt>
+                                  <dd itemprop = "author" itemscope itemtype = "http://schema.org/Person">
+                                      <dl>
+                                          <dt id = "name">Author name:</dt>
+                                          <dt id = "email">Author email:</dt>
+                                          <dt id = "telephone">Author telephone:</dt>
+                                          <dt id = "url">Author url:</dt>
+                                      </dl>
+                                  </dd>
+                              <dt id = "comment">Comment :</dt>
+                              <dt id = "audio">Audio :</dt>
+                              <dt id = "video">Video :</dt>
+                              <dt id = "date">Date :</dt>
+
+                    $("input").change(function () {
+                        udata.uid = this.name;
+                        udata.uvalue = this.value;
+                        if (console.log) {
+                            console.log(udata.uid + ' ' + udata.uvalue);
+                        }
+                        var dt = $("#" + udata.uid);
+                        var dd = dt.next();
+                        if (dd.is("dd")) {
+                            dd.remove();
+                        }
+                        dt.after($("<dd itemprop=\"" + udata.uid + "\">" + udata.uvalue + "</dd>"));
+                        //   var a = obtenir(udate.uid);
+                    });

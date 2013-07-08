@@ -11,89 +11,89 @@ License URI:
 /*TODO - clean it up*/
 
 #gotop {
-    text-align: center;
-    text-decoration: none;
-    color: #078;
-    font-size: 2em;
+    text-align      : center;
+    text-decoration : none;
+    color           : #078;
+    font-size       : 2em;
     }
 
 #butoane > a {
-    color: #fff;
-    background: #078;
-    border-radius: 3em 3em 3em 3em;
-    line-height: 3em;
-    text-align: center;
-    width: 3em;
-    padding: .6em;
-    text-decoration: none;
+    color           : #fff;
+    background      : #078;
+    border-radius   : 3em 3em 3em 3em;
+    line-height     : 3em;
+    text-align      : center;
+    width           : 3em;
+    padding         : .6em;
+    text-decoration : none;
     }
 
 #formular {
-    width: 48%;
-    float: left;
-    display: inline-block;
+    width   : 48%;
+    float   : left;
+    display : inline-block;
     }
 
 #schemadata {
-    width: 48%;
-    float: right;
-    display: inline-block;
+    width   : 48%;
+    float   : right;
+    display : inline-block;
     }
 
 body {
-    width: 100%;
-    margin: 0 auto;
-    font-size: 16px;
-    background: #f7f7f7;
+    width      : 100%;
+    margin     : 0 auto;
+    font-size  : 16px;
+    background : #f7f7f7;
     }
 
 #main {
-    width: 90%;
+    width : 90%;
     }
 
 .clear:after {
-    clear: both;
-    content: ".";
-    display: block;
-    height: 0;
-    visibility: hidden;
+    clear      : both;
+    content    : ".";
+    display    : block;
+    height     : 0;
+    visibility : hidden;
     }
 
 .alignleft {
-    display: inline-block;
-    float: left;
+    display : inline-block;
+    float   : left;
     }
 
 .alignright {
-    display: inline-block;
-    float: right;
+    display : inline-block;
+    float   : right;
     }
 
 #siteinfo > p {
-    text-align: center;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: 300;
-    font-size: .8em;
-    margin: 1em;
+    text-align  : center;
+    font-family : 'Open Sans Condensed', sans-serif;
+    font-weight : 300;
+    font-size   : .8em;
+    margin      : 1em;
     }
 
 h1 {
-    font-family: 'Lobster', cursive;
-    font-weight: 400;
-    color: #078;
-    font-size: 2em;
-    margin: 0;
-    padding: 0;
+    font-family : 'Lobster', cursive;
+    font-weight : 400;
+    color       : #078;
+    font-size   : 2em;
+    margin      : 0;
+    padding     : 0;
     }
 
 footer {
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: 300;
+    font-family : 'Open Sans Condensed', sans-serif;
+    font-weight : 300;
     }
 
 a {
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: 700;
-    color: #800;
-    text-decoration: underline;
+    font-family     : 'Open Sans Condensed', sans-serif;
+    font-weight     : 700;
+    color           : #800;
+    text-decoration : underline;
     }
