@@ -38,10 +38,9 @@ $(document).ready(function () {
         for (i=1;i<=theIndex;i++) {
             scrie = '<fieldset id=\"author-' + i + '\"><legend class = \"author\">author:</legend><label>name:</label> <input class = \"author\" name = \"name\" type = \"text\"></br><label>email:</label> <input class = \"author\" name = \"email\" type = \"text\"/></br><label>telephone:</label> <input class = \"author\" name =  \"telephone\" type = \"number\"/></br><label>url:</label> <input class = \"author\" name = \"url\" type = \"url\"/></br></fieldset>';
             inpid.after(scrie);
-        };
-    };
-
- /*   function makeForm(anr) {
+        }
+    }
+    /*   function makeForm(anr) {
         aVal = anr.value;
         if (console.log) {
             console.log('aVal = ' + aVal);
