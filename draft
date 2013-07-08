@@ -67,3 +67,27 @@ Article:
                         dt.after($("<dd itemprop=\"" + udata.uid + "\">" + udata.uvalue + "</dd>"));
                         //   var a = obtenir(udate.uid);
                     });
+
+                                        <fieldset id="author">
+                                            <legend class = "author">author1:</legend>
+                                            <label>name:</label> <input
+                                                                        class = "author"
+                                                                        name = "name"
+                                                                        type = "text"
+                                                                        value = ""/></br>
+                                            <label>email:</label> <input
+                                                                         class = "author"
+                                                                         name = "email"
+                                                                         type = "text"
+                                                                         value = ""/></br>
+                                            <label>telephone:</label> <input
+                                                                             class = "author"
+                                                                             name = "telephone"
+                                                                             type = "number"
+                                                                             value = ""/></br>
+                                            <label>url:</label> <input
+                                                                       class = "author"
+                                                                       name = "url"
+                                                                       type = "url"
+                                                                       value = ""/></br>
+                                        </fieldset>

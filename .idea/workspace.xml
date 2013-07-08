@@ -11,11 +11,11 @@
     <file path="/about.js" changelist="34b3e977-2fcd-416b-8aeb-32e0c334b4c6" time="1373020315088" ignored="false" />
     <file path="/style.css" changelist="34b3e977-2fcd-416b-8aeb-32e0c334b4c6" time="1373013807115" ignored="false" />
     <file path="/a.js" changelist="34b3e977-2fcd-416b-8aeb-32e0c334b4c6" time="1372846590115" ignored="false" />
-    <file path="/a.html" changelist="34b3e977-2fcd-416b-8aeb-32e0c334b4c6" time="1373014031714" ignored="false" />
+    <file path="/a.html" changelist="34b3e977-2fcd-416b-8aeb-32e0c334b4c6" time="1373288233948" ignored="false" />
     <file path="/a.css" changelist="34b3e977-2fcd-416b-8aeb-32e0c334b4c6" time="1372846607187" ignored="false" />
     <file path="/Dummy.txt" changelist="34b3e977-2fcd-416b-8aeb-32e0c334b4c6" time="1373282312045" ignored="false" />
-    <file path="/wdata.html" changelist="34b3e977-2fcd-416b-8aeb-32e0c334b4c6" time="1373280404263" ignored="false" />
-    <file path="/wdata.js" changelist="34b3e977-2fcd-416b-8aeb-32e0c334b4c6" time="1373284803856" ignored="false" />
+    <file path="/wdata.html" changelist="34b3e977-2fcd-416b-8aeb-32e0c334b4c6" time="1373290311104" ignored="false" />
+    <file path="/wdata.js" changelist="34b3e977-2fcd-416b-8aeb-32e0c334b4c6" time="1373290681707" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +47,7 @@
       <file leaf-file-name="wdata.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wdata.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="16" selection-end="16" vertical-scroll-proportion="-0.65384614">
+            <state line="60" column="66" selection-start="1914" selection-end="1914" vertical-scroll-proportion="-5.230769">
               <folding />
             </state>
           </provider>
@@ -56,8 +56,19 @@
       <file leaf-file-name="wdata.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wdata.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="43" selection-start="481" selection-end="481" vertical-scroll-proportion="0.14157303">
+            <state line="32" column="12" selection-start="700" selection-end="700" vertical-scroll-proportion="0.20823245">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jquery-1.9.1.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jquery-1.9.1.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2168" column="44" selection-start="78304" selection-end="78304" vertical-scroll-proportion="7.52">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -65,7 +76,7 @@
       <file leaf-file-name="draft" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/draft">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="23" selection-start="3126" selection-end="3126" vertical-scroll-proportion="0.0">
+            <state line="92" column="51" selection-start="5052" selection-end="5052" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -185,7 +196,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="options.lastSelected" value="preferences.sourceCode.HTML" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="FullScreen" value="false" />
@@ -296,9 +307,9 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4329609" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24982357" sideWeight="0.65782124" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24982357" sideWeight="0.6312849" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24276641" sideWeight="0.65782124" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34217876" sideWeight="0.49964714" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36871508" sideWeight="0.49964714" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.39944133" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34217876" sideWeight="0.50035286" order="7" side_tool="true" content_ui="tabs" />
@@ -373,7 +384,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="3" />
     </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
@@ -457,11 +468,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jquery-1.9.1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8444" column="25" selection-start="327364" selection-end="327364" vertical-scroll-proportion="0.56557375" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../test/before.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="4" selection-start="330" selection-end="330" vertical-scroll-proportion="0.4439324">
@@ -471,14 +477,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/draft">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="23" selection-start="3126" selection-end="3126" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wdata.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="16" selection-end="16" vertical-scroll-proportion="-0.65384614">
+        <state line="92" column="51" selection-start="5052" selection-end="5052" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -490,9 +489,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/jquery-1.9.1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2168" column="44" selection-start="78304" selection-end="78304" vertical-scroll-proportion="7.52">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wdata.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="66" selection-start="1914" selection-end="1914" vertical-scroll-proportion="-5.230769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/wdata.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="43" selection-start="481" selection-end="481" vertical-scroll-proportion="0.14157303">
+        <state line="32" column="12" selection-start="700" selection-end="700" vertical-scroll-proportion="0.20823245">
           <folding />
         </state>
       </provider>
