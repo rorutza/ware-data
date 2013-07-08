@@ -27,19 +27,20 @@ $(document).ready(function () {
 
     // dt.append($("<dd itemprop=\"" + itemprop + "\">" + print + "</dd>"));
 
-    function makefield() {
+    $("#makeaut").click(function() {
         //input dupa id
         var inpid = $("#makeaut");
-        var theIndex = inpid[0].value;
         if (console.log) {
-            console.log('theIndex = ' + theIndex);
+            console.log('Clicked');
         }
-        var i;
-        for (i=1;i<=theIndex;i++) {
-            scrie = '<fieldset id=\"author-' + i + '\"><legend class = \"author\">author:</legend><label>name:</label> <input class = \"author\" name = \"name\" type = \"text\"></br><label>email:</label> <input class = \"author\" name = \"email\" type = \"text\"/></br><label>telephone:</label> <input class = \"author\" name =  \"telephone\" type = \"number\"/></br><label>url:</label> <input class = \"author\" name = \"url\" type = \"url\"/></br></fieldset>';
-            inpid.after(scrie);
-        }
-    }
+        var scrie = '<fieldset><legend class = \"author\">author:</legend>'
+            + '<label>name:</label> <input class = \"author\" name = \"name\" type = \"text\"/><br>'
+            + '<label>email:</label> <input class = \"author\" name = \"email\" type = \"text\"/><br>'
+            + '<label>telephone:</label> <input class = \"author\" name =  \"telephone\" type = \"number\"/><br>'
+            + '<label>url:</label> <input class = \"author\" name = \"url\" type = \"url\"/><br>'
+            + '<button type=\"button\" class=\"button delete-parent\">X</button></fieldset>';
+        inpid.after(scrie);
+    });
     /*   function makeForm(anr) {
         aVal = anr.value;
         if (console.log) {
@@ -51,13 +52,13 @@ $(document).ready(function () {
     };
 
 */
+    $("form").on("click", "button.delete-parent", function() {
+       $(this).parent().remove();
+    });
     $("form").on("change","input",function () {
         var itemtype = this.className;
         var itemprop = this.name;
         var print = this.value;
-        if (itemprop == "makeaut") {
-            makefield();
-        } else {
             udata[itemtype][itemprop] = this.value;
             //   var itemprop = this.name;
             if (console.log) {
@@ -76,7 +77,7 @@ $(document).ready(function () {
             }
             dt.append($("<dd itemprop=\"" + itemprop + "\">" + print + "</dd>"));
             //   var a = obtenir(udate.uid);
-        }
+
     });
 
     /*
