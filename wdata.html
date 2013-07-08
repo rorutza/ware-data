@@ -1,29 +1,22 @@
 <!DOCTYPE html>
 <meta charset = "UTF-8"/>
+<meta name = "viewport" content = "initial-scale=1.0, width=device-width"/>
 <title>
     Microdata Schema.org Test</title>
-<link href = "http://fonts.googleapis.com/css?family=Open+Sans"
-      rel = "stylesheet"
-      type = "text/css"/>
-<link href = "http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700"
-      rel = "stylesheet"
-      type = "text/css">
-<link href = "http://fonts.googleapis.com/css?family=Lobster"
-      rel = "stylesheet"
-      type = "text/css">
-<link href = "http://fonts.googleapis.com/css?family=Source+Code+Pro"
-      rel = "stylesheet"
-      type = "text/css">
-<link rel = "stylesheet"
-      href = "style.css"
-      type = "text/css"
-      media = "screen">
+<link href = "http://fonts.googleapis.com/css?family=Open+Sans" rel = "stylesheet" type = "text/css"/>
+<link href = "http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel = "stylesheet" type = "text/css">
+<link href = "http://fonts.googleapis.com/css?family=Lobster" rel = "stylesheet" type = "text/css">
+<link href = "http://fonts.googleapis.com/css?family=Source+Code+Pro" rel = "stylesheet" type = "text/css">
+<link rel = "stylesheet" href = "style.css" type = "text/css" media = "screen">
 
-<script type = "text/javascript"
-        src = "jquery-1.9.1.js"></script>
+<script type = "text/javascript" src = "jquery-1.9.1.js"></script>
 
-<script type = "text/javascript"
-        src = "wdata.js"></script>
+<script type = "text/javascript" src = "wdata.js"></script>
+<style type = "text/css">.recentcomments a {
+    display: inline !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    }</style>
 
 <body>
 
@@ -34,59 +27,45 @@
 
     </header>
     <!-- #branding -->
-    <div id = "main"
-         class = "clear">
+    <div id = "main" class = "clear">
 
         <header id = "content-header">
-            <h1 id = "content-title">SNMP Article</h1>
+            <h1 id = "content-title">Test Schema</h1>
         </header>
+        <div id = "test">
+
+        </div>
         <div id = "formular">
             <form action = "#">
 
-
                 <fieldset>
-                    <legend>Properties :</legend>
-                    <label for = "wabout">About: </label>
-                    <input id = "wabout"
-                           name = "about"
-                           type = "text"
-                           value = ""/></br>
-
-
-                    <label for = "wcopyrightYear">copyrightYear: </label>
-                    <input id = "wcopyrightYear"
-                           name = "copyrightYear"
-                           type = "number"
-                           value = ""/></br>
-
-                    <label for = "wdateCreated">dateCreated: </label>
-                    <input id = "wdateCreated"
-                           name = "dateCreated"
-                           type = "date"
-                           value = ""/></br>
-
-                    <label for = "wdiscussionUrl">discussionUrl: </label>
-                    <input id = "wdiscussionUrl"
-                           name = "discussionUrl"
-                           type = "url"
-                           value = ""/></br>
-
-
-                    <label for = "wtimeRequired">timeRequired: </label>
-                    <input id = "wtimeRequired"
-                           name = "timeRequired"
-                           type = "time"
-                           value = ""/></br>
-
+                    <legend>Properties</legend>
+                    <label>name:</label>            <input id = "" class = "article" name = "name" type = "text" value = ""/></br>
+                    <label>about:</label>           <input id = "" class = "article" name = "about" type = "text" value = ""/></br>
+                    <label>version:</label>         <input id = "" class = "article" name = "version" type = "number" value = ""/></br>
+                    <fieldset>
+                        <legend class="author">author:</legend>
+                        <label>name:</label>        <input id = "" class = "author" name = "name" type = "text" value = ""/></br>
+                        <label>email:</label>       <input id = "" class = "author" name = "email" type = "text" value = ""/></br>
+                        <label>telephone:</label>   <input id = "" class = "author" name = "telephone" type = "number" value = ""/></br>
+                        <label>url:</label>         <input id = "" class = "author" name = "url" type = "url" value = ""/></br>
+                    </fieldset>
+                    <fieldset>
+                        <legend class="author">author:</legend>
+                        <label>name:</label>        <input id = "" class = "author" name = "name" type = "text" value = ""/></br>
+                        <label>email:</label>       <input id = "" class = "author" name = "email" type = "text" value = ""/></br>
+                        <label>telephone:</label>   <input id = "" class = "author" name = "telephone" type = "number" value = ""/></br>
+                        <label>url:</label>         <input id = "" class = "author" name = "url" type = "url" value = ""/></br>
+                    </fieldset>
+                    <label>comment:</label>         <input id = "" class = "article" name = "comment" type = "text" value = ""/></br>
+                    <label>audio:</label>           <input id = "" class = "article" name = "audio" type = "text" value = ""/></br>
+                    <label>video:</label>           <input id = "" class = "article" name = "video" type = "text" value = ""/></br>
+                    <label>date:</label>            <input id = "" class = "article" name = "date" type = "date" value = ""/></br>
 
                 </fieldset>
 
                 <p class = "submit">
-                    <input type = "submit"
-                           name = "submit"
-                           id = "submit"
-                           class = "button"
-                           value = "Save Changes"/>
+                    <input type = "submit" name = "submit" id = "submit" class = "button" value = "Save Changes"/>
                 </p>
             </form>
         </div>
@@ -94,51 +73,31 @@
 
         <div id = "schemadata">
             <div id = "butoane">
-                <a id = "buton1"
-                   href = "#">About</a>
-                <a id = "buton2"
-                   href = "#">Autor</a>
-                <a id = "buton3"
-                   href = "#">Append</a>
-                <a id = "buton4"
-                   href = "#">Change</a>
-                <span id = "scrie"></span>
+                <a id = "buton1" href = "#">Name</a> <a id = "buton2" href = "#">About</a> <a id = "buton3" href = "#">Append</a> <a id = "buton4" href = "#">Change</a>
+                <span id = "write"></span>
             </div>
             <!-- #butoane -->
-            <div id = "microudata"
-                 itemscope
-                 itemtype = "http://schema.org/Article">
-                <span id = "about"
-                      itemprop = "about"
-                      content = ""></span>
-                <span id = "copyrightYear"
-                      itemprop = "copyrightYear"
-                      content = ""></span>
-                <span id = "dateCreated"
-                      itemprop = "dateCreated"
-                      content = ""></span>
-                <span id = "discussionUrl"
-                      itemprop = "discussionUrl"
-                      content = ""></span>
-                <span id = "timeRequired"
-                      itemprop = "timeRequired"
-                      content = ""></span>
+            <div id = "microudata" itemscope itemtype = "http://schema.org/Article">
+                <!--TODO - create other patterns-->
+                <dl id = "properties">
+
+                </dl>
             </div>
             <!-- microudata -->
         </div>
         <!-- #schemadata -->
+
     </div>
     <!-- #main -->
+
     <footer id = "pagefoot">
-        <div><a id = "gotop"
-                href = "#site-title">&#128285;</a></div>
+
+        <div><a id = "gotop" href = "#site-title">&#128285;</a></div>
+
         <div id = "siteinfo"><p>MicrodataSchema.org Test proudly powered by Warelet </p></div>
         <!-- #siteinfo -->
     </footer>
 </div>
 <!-- #page -->
 
-</body>
-</html>
-<!--Cached using Nginx-Helper on 2013-07-02 21:37:44. It took 28 queries executed in 0.047 seconds.-->
-<!--Visit http://wordpress.org/extend/plugins/nginx-helper/faq/ for more details-->
+</body></html><!--Cached using Nginx-Helper on 2013-07-02 21:37:44. It took 28 queries executed in 0.047 seconds.--><!--Visit http://wordpress.org/extend/plugins/nginx-helper/faq/ for more details-->

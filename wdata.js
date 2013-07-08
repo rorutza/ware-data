@@ -2,13 +2,13 @@ $(document).ready(function () {
 
     var d = $("#microudata");
 
-    $("#buton1").click(function () {
-        $("#about").html($("#wabout").val());
-    });
-    $("#buton2").click(function () {
-        $("#accountablePerson").html($("#waccountablePerson").val());
-    });
-
+    /*    $("#buton1").click(function () {
+     $("#about").html($("#wabout").val());
+     });
+     $("#buton2").click(function () {
+     $("#accountablePerson").html($("#waccountablePerson").val());
+     });
+     */
     /*    $("#buton3").click(function () {
      var wval = $("#waudio").val();
      d.append('<span id = "new" itemprop = "audio" content = "About">');
@@ -17,20 +17,25 @@ $(document).ready(function () {
      });
      */
     var udata = {
-        uid: "test",
-        ovalue: "test"
+        uprop: "test",
+        uvalue: "test"
     };
+//TODO - other ways of doing it
     $("input").change(function () {
-        udata.uid = this.name;
-        udata.ovalue = this.value;
-        // alert(udata.uid + ' ' + udata.ovalue);
-        // var a = obtenir(udate.uid);
-        $("#" + udata.uid).html(udata.ovalue);
-        $("#" + udata.uid).before('<label>');
-        $("#" + udata.uid).after('</br>');
-        $("#" + udata.uid).show();
-
-
+        udata.uprop = this.name;
+        udata.uvalue = this.value;
+        if (console.log) {
+            console.log(udata.uprop + ' ' + udata.uvalue);
+        }
+        var dl = $("#properties");
+        var dt = dl.append($("<dt>" + udata.uprop + "</dt>"));
+        //var dt = $("#" + udata.uprop);
+        var dd = dt.next();
+        if (dd.is("dd")) {
+            dd.remove();
+        }
+        dt.append($("<dd itemprop=\"" + udata.uprop + "\">" + udata.uvalue + "</dd>"));
+        //   var a = obtenir(udate.uid);
     });
 
     /*
