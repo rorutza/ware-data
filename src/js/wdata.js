@@ -25,20 +25,41 @@ $(document).ready(function () {
         }
     };
 
+    //Myclicks - constructor - controlling the number of clicks
+
+     function Myclicks() {
+         var clicks = 0;
+
+         this.getClicks = function() {
+             return clicks;
+         };
+
+         this.newclick = function() {
+             clicks++;
+         };
+
+         this.delclick = function() {
+             clicks--;
+         };
+     }
+
+    var theclicks = new Myclicks();
+
     // dt.append($("<dd itemprop=\"" + itemprop + "\">" + print + "</dd>"));
 
     $("#makeaut").click(function() {
         //input dupa id
+        theclicks.newclick();
         var inpid = $("#makeaut");
         if (console.log) {
-            console.log('Clicked');
+            console.log('Clicked ADD - newclicks = ' + theclicks.getClicks() + ' vegades!');
         }
-        var scrie = '<fieldset><legend class = \"author\">author:</legend>'
+        var scrie = '<fieldset id=\"author-' + theclicks.getClicks() + '\"><legend class = \"author\">author:</legend>'
             + '<label>name:</label> <input class = \"author\" name = \"name\" type = \"text\"/><br>'
             + '<label>email:</label> <input class = \"author\" name = \"email\" type = \"text\"/><br>'
             + '<label>telephone:</label> <input class = \"author\" name =  \"telephone\" type = \"number\"/><br>'
             + '<label>url:</label> <input class = \"author\" name = \"url\" type = \"url\"/><br>'
-            + '<button type=\"button\" class=\"button delete-parent\">X</button></fieldset>';
+            + '<button id=\"delauth-' + theclicks.getClicks() + '\" type=\"button\" class=\"button delete-parent\">X</button></fieldset>';
         inpid.after(scrie);
     });
     /*   function makeForm(anr) {
@@ -54,6 +75,10 @@ $(document).ready(function () {
 */
     $("form").on("click", "button.delete-parent", function() {
        $(this).parent().remove();
+       theclicks.delclick();
+       if (console.log) {
+           console.log('Clicked X - delclicks = ' + theclicks.getClicks() + ' vegades!');
+       }
     });
     $("form").on("change","input",function () {
         var itemtype = this.className;
@@ -69,13 +94,13 @@ $(document).ready(function () {
             }
 
             var dl = $("#properties");
-            var dt = dl.append($("<dt>" + itemprop + "</dt>"));
+            var dt = dl.append($('<dt>' + itemprop + '</dt>'));
             //var dt = $("#" + itemprop);
             var dd = dt.next();
             if (dd.is("dd")) {
                 dd.remove();
             }
-            dt.append($("<dd itemprop=\"" + itemprop + "\">" + print + "</dd>"));
+            dt.append($('<dd itemprop=\"' + itemprop + '\">' + print + '</dd>'));
             //   var a = obtenir(udate.uid);
 
     });
