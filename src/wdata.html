@@ -33,7 +33,27 @@
             <h1 id="content-title">Test Schema</h1>
         </header>
         <div id="test">
-
+            <div itemscope itemtype="http://schema.org/Article">
+                <span itemprop="name"></span>
+                <span itemprop="about"></span>
+                <span itemprop="version"></span>
+                <div itemscope itemtype="http://schema.org/Person">
+                    <span itemprop="name"></span>
+                    <span itemprop="email"></span>
+                    <span itmeprop="telephone"></span>
+                    <span itemprop="url"></span>
+                </div><!-- Person -->
+                <div itemscope itemtype="http://schema.org/Person">
+                    <span itemprop="name"></span>
+                    <span itemprop="email"></span>
+                    <span itmeprop="telephone"></span>
+                    <span itemprop="url"></span>
+                </div><!-- Person -->
+                <span itemprop="comment"></span>
+                <span itemprop="audio"></span>
+                <span itemprop="video"></span>
+                <span itemprop="date"></span>
+            </div><!-- Article -->
         </div>
         <div id="formular">
             <form action="#">
@@ -59,12 +79,14 @@
 
         <div id="schemadata">
             <div id="butoane">
-                <a id="buton1" href="#">Name</a> <a id="buton2" href="#">About</a> <a id="buton3" href="#">Append</a> <a id="buton4" href="#">Change</a>
+                <a id="push1" href="#">1</a>
+                <a id="push2" href="#">2</a>
+                <a id="push3" href="#">3</a>
+                <a id="push4" href="#">4</a>
                 <span id="write"></span>
             </div>
             <!-- #butoane -->
             <div id="microudata" itemscope itemtype="http://schema.org/Article">
-                <!--TODO - create other patterns-->
                 <dl id="properties">
 
                 </dl>
@@ -77,8 +99,6 @@
     <!-- #main -->
 
     <footer id="pagefoot">
-
-        <div><a id="gotop" href="#site-title">&#128285;</a></div>
 
         <div id="siteinfo"><p>MicrodataSchema.org Test proudly powered by Warelet </p></div>
         <!-- #siteinfo -->

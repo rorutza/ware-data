@@ -83,7 +83,7 @@ $(document).ready(function () {
     $("form").on("change","input",function () {
         var itemtype = this.className;
         var itemprop = this.name;
-        var print = this.value;
+        var itemval = this.value;
             udata[itemtype][itemprop] = this.value;
             //   var itemprop = this.name;
             if (console.log) {
@@ -93,16 +93,18 @@ $(document).ready(function () {
                 //console.log('meta.itemtype.itemprop = ' + meta.itemtype.itemprop);
             }
 
-            var dl = $("#properties");
+        var divdata = $("#microudata");
+
+/*            var dl = $("#properties");
             var dt = dl.append($('<dt>' + itemprop + '</dt>'));
             //var dt = $("#" + itemprop);
             var dd = dt.next();
             if (dd.is("dd")) {
                 dd.remove();
             }
-            dt.append($('<dd itemprop=\"' + itemprop + '\">' + print + '</dd>'));
+            dt.append($('<dd itemprop=\"' + itemprop + '\">' + itemval + '</dd>'));
             //   var a = obtenir(udate.uid);
-
+ */
     });
 
     /*
