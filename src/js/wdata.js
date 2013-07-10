@@ -1,29 +1,15 @@
 $(document).ready(function () {
 
     /*
-     Select nr de prop de acelasi fel
-     Select cand se adauga noi tipuri
-     O functie care tine minte daca s-a completat deja un imput
+    udata - schema
      */
 
-
     var udata = {
-        article: {
-            name: "",
-            about: "",
-            version: "",
-            comment: "",
-            audio: "",
-            video: "",
-            date: ""
-        },
-        author: {
-            name: "",
-            email: "",
-            telephone: "",
-            url: ""
-        }
-    };
+        article: "Article",
+        author: "Person"
+    }
+
+    var divdata = $("#microudata");
 
     //Myclicks - constructor - controlling the number of clicks
 
@@ -47,32 +33,46 @@ $(document).ready(function () {
 
     // dt.append($("<dd itemprop=\"" + itemprop + "\">" + print + "</dd>"));
 
+    var divscope = function (itemprop) {
+        var scrie = '<div itemprop=\"' + itemprop + '\" itemscope '
+            + 'itemtype=\"http://schema.org/' + udata[itemprop] + '\"></div>';
+        if (console.log) {
+            console.log('divscope scrie = ' + scrie);
+        }
+        return scrie;
+    };
+
+    var spanprop = function (itemprop,itemval) {
+        var scrie = '<span itemprop=\"' + itemprop + '\">' + itemval + '</span>';
+        if (console.log) {
+            console.log('spanprop scrie = ' + scrie);
+        }
+        return scrie;
+    };
+
     $("#makeaut").click(function() {
         //input dupa id
         theclicks.newclick();
         var inpid = $("#makeaut");
+        var idemprop = this.name;
         if (console.log) {
             console.log('Clicked ADD - newclicks = ' + theclicks.getClicks() + ' vegades!');
+            console.log('New idemscope = ' + idemprop);
         }
-        var scrie = '<fieldset id=\"author-' + theclicks.getClicks() + '\"><legend class = \"author\">author:</legend>'
-            + '<label>name:</label> <input class = \"author\" name = \"name\" type = \"text\"/><br>'
-            + '<label>email:</label> <input class = \"author\" name = \"email\" type = \"text\"/><br>'
-            + '<label>telephone:</label> <input class = \"author\" name =  \"telephone\" type = \"number\"/><br>'
-            + '<label>url:</label> <input class = \"author\" name = \"url\" type = \"url\"/><br>'
-            + '<button id=\"delauth-' + theclicks.getClicks() + '\" type=\"button\" class=\"button delete-parent\">X</button></fieldset>';
-        inpid.after(scrie);
-    });
-    /*   function makeForm(anr) {
-        aVal = anr.value;
-        if (console.log) {
-            console.log('aVal = ' + aVal);
-        }
-        for (var i = 1; i < aVal; i++) {
-            makefield(anr, i);
-        }
-    };
+        var scrie = '<fieldset id=\"author-' + theclicks.getClicks() + '\"><legend class = \"person\">author:</legend>'
+            + '<label>name:</label> <input class = \"person\" name = \"name\" type = \"text\"/><br>'
+            + '<label>email:</label> <input class = \"person\" name = \"email\" type = \"text\"/><br>'
+            + '<label>telephone:</label> <input class = \"person\" name =  \"telephone\" type = \"number\"/><br>'
+            + '<label>url:</label> <input class = \"person\" name = \"url\" type = \"url\"/><br>'
+            + '<button type=\"button\" class=\"button delete-parent\">X</button></fieldset>';
 
-*/
+        inpid.after(scrie);
+
+        divdata.append(divscope(idemprop));
+
+        //    <div itemscope itemtype="http://schema.org/Person">
+    });
+
     $("form").on("click", "button.delete-parent", function() {
        $(this).parent().remove();
        theclicks.delclick();
@@ -84,16 +84,15 @@ $(document).ready(function () {
         var itemtype = this.className;
         var itemprop = this.name;
         var itemval = this.value;
-            udata[itemtype][itemprop] = this.value;
-            //   var itemprop = this.name;
+
             if (console.log) {
                 console.log('itemtype = ' + itemtype + ' --- ');
                 console.log('itemprop = ' + itemprop + ' --- ');
-                console.log('obj.itemtype.itemprop = ' + udata[itemtype][itemprop]);
+                console.log('itemval = ' + itemval);
                 //console.log('meta.itemtype.itemprop = ' + meta.itemtype.itemprop);
             }
 
-        var divdata = $("#microudata");
+        divdata.append(spanprop(itemprop,itemval));
 
 /*            var dl = $("#properties");
             var dt = dl.append($('<dt>' + itemprop + '</dt>'));

@@ -37,13 +37,13 @@
                 <span itemprop="name"></span>
                 <span itemprop="about"></span>
                 <span itemprop="version"></span>
-                <div itemscope itemtype="http://schema.org/Person">
+                <div itemprop="author" itemscope itemtype="http://schema.org/Person">
                     <span itemprop="name"></span>
                     <span itemprop="email"></span>
-                    <span itmeprop="telephone"></span>
+                    <span itemprop="telephone"></span>
                     <span itemprop="url"></span>
                 </div><!-- Person -->
-                <div itemscope itemtype="http://schema.org/Person">
+                <div itemprop="author" itemscope itemtype="http://schema.org/Person">
                     <span itemprop="name"></span>
                     <span itemprop="email"></span>
                     <span itmeprop="telephone"></span>
@@ -63,11 +63,11 @@
                     <label>name:</label> <input class="article" type="text" name="name"/><br>
                     <label>about:</label> <input class="article" name="about" type="text"/><br>
                     <label>version:</label> <input class="article" name="version" type="number"/><br>
-                    <label>authors:</label> <button id="makeaut" name="makeaut" type="button">Add</button><br>
                     <label>comment:</label> <input class="article" name="comment" type="text"/><br>
                     <label>audio:</label> <input class="article" name="audio" type="text"/><br>
                     <label>video:</label> <input class="article" name="video" type="text"/><br>
                     <label>date:</label> <input class="article" name="date" type="date"/><br>
+                    <label>authors:</label> <button id="makeaut" name="author" type="button">Add</button><br>
 
                 </fieldset>
                 <p class="submit">
@@ -87,9 +87,7 @@
             </div>
             <!-- #butoane -->
             <div id="microudata" itemscope itemtype="http://schema.org/Article">
-                <dl id="properties">
 
-                </dl>
             </div>
             <!-- microudata -->
         </div>
