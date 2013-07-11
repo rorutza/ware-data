@@ -32,43 +32,16 @@
         <header id="content-header">
             <h1 id="content-title">Test Schema</h1>
         </header>
-        <div id="test">
-            <div itemscope itemtype="http://schema.org/Article">
-                <span itemprop="name"></span>
-                <span itemprop="about"></span>
-                <span itemprop="version"></span>
-                <div itemprop="author" itemscope itemtype="http://schema.org/Person">
-                    <span itemprop="name"></span>
-                    <span itemprop="email"></span>
-                    <span itemprop="telephone"></span>
-                    <span itemprop="url"></span>
-                </div><!-- Person -->
-                <div itemprop="author" itemscope itemtype="http://schema.org/Person">
-                    <span itemprop="name"></span>
-                    <span itemprop="email"></span>
-                    <span itmeprop="telephone"></span>
-                    <span itemprop="url"></span>
-                </div><!-- Person -->
-                <span itemprop="comment"></span>
-                <span itemprop="audio"></span>
-                <span itemprop="video"></span>
-                <span itemprop="date"></span>
-            </div><!-- Article -->
-        </div>
         <div id="formular">
             <form action="#">
 
                 <fieldset>
-                    <legend>Properties</legend>
-                    <label>name:</label> <input class="article" type="text" name="name"/><br>
-                    <label>about:</label> <input class="article" name="about" type="text"/><br>
-                    <label>version:</label> <input class="article" name="version" type="number"/><br>
-                    <label>comment:</label> <input class="article" name="comment" type="text"/><br>
-                    <label>audio:</label> <input class="article" name="audio" type="text"/><br>
-                    <label>video:</label> <input class="article" name="video" type="text"/><br>
-                    <label>date:</label> <input class="article" name="date" type="date"/><br>
-                    <label>authors:</label> <button id="makeaut" name="author" type="button">Add</button><br>
-
+                    <legend>Schema</legend>
+                    <select id="schema">
+                        <option value="Article">Article</option>
+                        <option value="Movie">Movie</option>
+                        <option value="Painting">Painting</option>
+                    </select>
                 </fieldset>
                 <p class="submit">
                     <input type="submit" name="submit" id="submit" class="button" value="Save Changes"/>

@@ -1,62 +1,167 @@
+###################
+Select - choose schema
+=> general input
+=> Add button for the fields that can repeat
+Article: - ADD author
+Movie: - ADD actor
 
 
 
 
-
-                <label id="name">Name : </label> <span itemprop="name" content="name"></span>
-                <label id="about">About : </label> <span id="about" itemprop="about" content="about"></span>
-                <label id="version">Version : </label>Version : <span itemprop="version" content="version"></span>
-                <label id="award">Award : </label><span itemprop="award" content="award"></span>
-                <label id="comment">Comment : </label><span itemprop="comment" content="comment"></span>
-                <label id="audio">Audio : </label>
-                <label id="video">Video : </label>
-                <label id="date">Date : </label><span itemprop="date" content="date"></span>
+###################
+###Schema Test 2
+###################
 
 Article:
-- name
-- about
-- version
-- author
-    Person:
-        - name
-        - email
-        - telephone
-        - url
-- comment
-- audio
-- video
-- date
+- name: text
+- about: text
+- dateCreated: date
+- wordCount: number
+- author: Person:
+            - name - text
+            - email - email
+            - telephone - number
+            - url - url
 
-                <dl>
-                    <dt id = "name">Name :</dt>
-                    <dt id = "about">About :</dt>
-                    <dt id = "version">Version :</dt>
-                    <dt id = "author">Author :</dt>
-                    <dt id = "comment">Comment :</dt>
-                    <dt id = "audio">Audio :</dt>
-                    <dt id = "video">Video :</dt>
-                    <dt id = "date">Date :</dt>
+Movie
+- name - text
+- about - text
+- dateCreated - date
+- genre - text
+- duration - time
+- director: Person:
+            - name - text
+            - email - email
+            - telephone - number
+            - url - url
+- actor: Person:
+            - name - text
+            - email - email
+            - telephone - number
+            - url - url
 
-                </dl>
+Painting
+- name - text
+- description - text
+- dateCreated - date
+- image - url
+- offers: Offer:
+            - price - number
+            - priceCurrency - text
+            - acceptedPaymentMethod - text
+- author: Person:
+            - name - text
+            - email - email
+            - telephone - number
+            - url - url
 
-                  <div itemprop="director" itemscope itemtype="http://schema.org/Person">
+##########
+####Form
+##########
 
-                             <dt id = "name">Name :</dt>
-                              <dt id = "about">About :</dt>
-                              <dt id = "version">Version :</dt>
-                              <dt id = "author">Author :</dt>
-                                  <dd itemprop = "author" itemscope itemtype = "http://schema.org/Person">
-                                      <dl>
-                                          <dt id = "name">Author name:</dt>
-                                          <dt id = "email">Author email:</dt>
-                                          <dt id = "telephone">Author telephone:</dt>
-                                          <dt id = "url">Author url:</dt>
-                                      </dl>
-                                  </dd>
-                              <dt id = "comment">Comment :</dt>
-                              <dt id = "audio">Audio :</dt>
-                              <dt id = "video">Video :</dt>
-                              <dt id = "date">Date :</dt>
+<fieldset>
+    <legend>Article</legend>
+    <label>name:</label> <input class="article" type="text" name="name"/><br>
+    <label>about:</label> <input class="article" name="about" type="text"/><br>
+    <label>dateCreated:</label> <input class="article" name="dateCreated" type="date"/><br>
+    <label>wordCount:</label> <input class="article" name="wordCount" type="number"/><br>
+    <label>author:</label> <button id="" name="author" type="button">Add</button><br>
+</fieldset>
+<fieldset>
+    <legend>Movie</legend>
+    <label>name:</label> <input class="movie" type="text" name="name"/><br>
+    <label>about:</label> <input class="movie" name="about" type="text"/><br>
+    <label>dateCreated:</label> <input class="movie" name="dateCreated" type="date"/><br>
+    <label>genre:</label> <input class="movie" name="genre" type="text"/><br>
+    <label>duration:</label> <input class="movie" name="duration" type="time"/><br>
+    <label>director:</label> <button id="" name="director" type="button">Add</button><br>
+    <label>actor:</label> <button id="" name="actor" type="button">Add</button><br>
+</fieldset>
+<fieldset>
+    <legend>Painting</legend>
+    <label>name:</label> <input class="painting" type="text" name="name"/><br>
+    <label>description:</label> <input class="painting" name="description" type="text"/><br>
+    <label>dateCreated:</label> <input class="painting" name="dateCreated" type="date"/><br>
+    <label>image:</label> <input class="painting" name="image" type="url"/><br>
+    <label>author:</label> <button id="" name="author" type="button">Add</button><br>
+    <label>offers:</label> <button id="" name="offer" type="button">Add</button><br>
+</fieldset>
+<fieldset>
+    <legend>Person</legend>
+    <label>name:</label> <input class="person" name="name" type="text"/><br>
+    <label>email:</label> <input class="person" name="email" type="text"/><br>
+    <label>telephone:</label> <input class="person" name="telephone" type="number"/><br>
+    <label>url:</label> <input class="person" name="url" type="url"/><br>
+</fieldset>
+<fieldset>
+    <legend>Offer</legend>
+    <label>price:</label> <input class="offer" name="price" type="number"/><br>
+    <label>priceCurrency:</label> <input class="offer" name="priceCurrency" type="text"/><br>
+    <label>acceptedPaymentMethod:</label> <input class="offer" name="acceptedPaymentMethod" type="text"/><br>
+</fieldset>
+
+###############
+####Microdata
+###############
+
+######Article
+
+<div itemscope itemtype="http://schema.org/Article">
+    <span itemprop="name"></span>
+    <span itemprop="about"></span>
+    <span itemprop="dateCreated"></span>
+    <span itemprop="wordCount"></span>
+    <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name"></span>
+        <span itemprop="email"></span>
+        <span itemprop="telephone"></span>
+        <span itemprop="url"></span>
+    </div><!-- Person -->
+</div><!-- Article -->
+
+######Movie
+
+<div itemscope itemtype="http://schema.org/Movie">
+    <span itemprop="name"></span>
+    <span itemprop="about"></span>
+    <span itemprop="dateCreated"></span>
+    <span itemprop="genre"></span>
+    <span itemprop="duration"></span>
+    <div itemprop="director" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name"></span>
+        <span itemprop="email"></span>
+        <span itmeprop="telephone"></span>
+        <span itemprop="url"></span>
+    </div><!-- Person -->
+    <div itemprop="actor" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name"></span>
+        <span itemprop="email"></span>
+        <span itmeprop="telephone"></span>
+        <span itemprop="url"></span>
+    </div><!-- Person -->
+</div><!-- Movie -->
+
+######Painting
+
+<div itemscope itemtype="http://schema.org/Painting">
+    <span itemprop="name"></span>
+    <span itemprop="description"></span>
+    <span itemprop="dateCreated"></span>
+    <span itemprop="image"></span>
+    <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name"></span>
+        <span itemprop="email"></span>
+        <span itmeprop="telephone"></span>
+        <span itemprop="url"></span>
+    </div><!-- Person -->
+    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <span itemprop="price"></span>
+        <span itemprop="priceCurrency"></span>
+        <span itmeprop="acceptedPaymentMethod"></span>
+    </div><!-- Offer -->
+</div><!-- Painting -->
+
+########################
 
                     $("input").change(function () {
                         udata.uid = this.name;
