@@ -17,7 +17,9 @@ Article:
 - about: text
 - dateCreated: date
 - wordCount: number
-- author: Person:
+- author:
+
+Person:
             - name - text
             - email - email
             - telephone - number
