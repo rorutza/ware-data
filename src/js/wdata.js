@@ -37,6 +37,12 @@ $(document).ready(function () {
   */
    };
 
+    function printInfo(param) {
+        var inputText = '<div>' + param + '</div>';
+        console.log("inputText: " + inputText);
+        $("#schemainput").append(inputText);
+    };
+
 
     //printForm()param
     //param - selected Schema
@@ -55,7 +61,7 @@ $(document).ready(function () {
                 for(var j = 0; j < v.length; ++j) {
                     console.log("j - " + j);
                     console.log("v[j] - " + v[j] + ": {");
-                    printSchema(v[j]);
+                    printForm(v[j]);
                     console.log("}");
                 }
                 console.log("]");
