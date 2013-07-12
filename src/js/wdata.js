@@ -1,13 +1,58 @@
 $(document).ready(function () {
 
+    //Get selected schema
+    //debbug -- selected_schema: "Article"
+    //testType(schemas[selected_schema]); -- Type of [object Object] is object! Is Array: false
+
+    $("form").on("change", "select#selectschema", function() {
+        var selected_schema = $( "#selectschema option:selected" ).val();
+        console.log("Selected Schema: " + selected_schema);
+        printSchema(selected_schema);
+    });
+
+    //printForm
+    //Array - multiple options
+    //not(Array) - input
+    //<label>K:</label> <input class = PARAM name = K type = V/><br>
+    //name - K - propiedad
+    //type - V - type
+    //class - PARAM - schema/object
+
+    function printInput(param) {
+        var inputText = fragmento("<div><label></label><input class=\"parametro\" type=\"text\"/></div>");
+    };
+
+    //printForm()param
+    //param - selected Schema
+    //k - property - itemprop
+    //v - type - itemtype if type object
+    //v[] - Schema if type object
+
+    function printForm(param) {
+
+        var s = schemas[param]; // s - [object Object]
+        console.log("printForm input param: " + param);
+        for(var k in s) {
+            var v = s[k];
+            if(v instanceof Array) {
+                console.log("k - " + k + ": [" + + "]"); //
+                for(var j = 0; j < v.length; ++j) {
+                    console.log("j - " + j);
+                    console.log("v[j] - " + v[j] + ": {");
+                    printSchema(v[j]);
+                    console.log("}");
+                }
+                console.log("]");
+            } else {
+                console.log("k - " + k + ": " + "v - " + v);
+            }
+        }
+    }
+
+
     /*
     udata - schema
      */
-
-    var udata = {
-        article: "Article",
-        author: "Person"
-    }
 
     var divdata = $("#microudata");
 
@@ -32,7 +77,7 @@ $(document).ready(function () {
     var theclicks = new Myclicks();
 
     // dt.append($("<dd itemprop=\"" + itemprop + "\">" + print + "</dd>"));
-
+/*
     var divscope = function (itemprop) {
         var scrie = '<div itemprop=\"' + itemprop + '\" itemscope '
             + 'itemtype=\"http://schema.org/' + udata[itemprop] + '\"></div>';
@@ -41,7 +86,8 @@ $(document).ready(function () {
         }
         return scrie;
     };
-
+  */
+    /*
     var spanprop = function (itemprop,itemval) {
         var scrie = '<span itemprop=\"' + itemprop + '\">' + itemval + '</span>';
         if (console.log) {
@@ -49,6 +95,7 @@ $(document).ready(function () {
         }
         return scrie;
     };
+    */
 
     $("#makeaut").click(function() {
         //input dupa id

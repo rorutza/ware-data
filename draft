@@ -5,9 +5,6 @@ Select - choose schema
 Article: - ADD author
 Movie: - ADD actor
 
-
-
-
 ###################
 ###Schema Test 2
 ###################
@@ -56,10 +53,35 @@ Painting
             - email - email
             - telephone - number
             - url - url
-
+##########
+###Type
+#########
+## Article ##
+k - name: v - text
+k - about: v - text
+k - dateCreated: v - date
+k - wordCount: v - number
+k - author: [
+            j - 0
+            v[j] - Person: {
+                k - name: v - text
+                k - email: v - email
+                k - telephone: v - number
+                k - url: v - url
+                }
+            j - 1
+            v[j] - Organization: {
+                k - name: v - text
+                k - email: v - email
+                k - telephone: v - number
+                k - url: v - url
+                }
+            ]
 ##########
 ####Form
 ##########
+
+
 
 <fieldset>
     <legend>Article</legend>
