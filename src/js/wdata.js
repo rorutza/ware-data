@@ -30,7 +30,7 @@ $(document).ready(function () {
         function fragmento(html) {
             var inputFrag = document.createDocumentFragment();
             console.log("inputFrag: " + inputFrag);
-            return inputFrag.append(html);
+            return $(inputFrag).append(html);
         };
     };
 
