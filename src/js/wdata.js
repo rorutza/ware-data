@@ -7,9 +7,9 @@ $(document).ready(function () {
     $("form").on("change", "select#selectschema", function() {
         var selected_schema = $( "#selectschema option:selected" ).val();
         console.log("Selected Schema: " + selected_schema);
-        printSchema(selected_schema);
+        //printSchema(selected_schema);
         printForm(selected_schema);
-    });
+       });
 
     //printForm
     //Array - multiple options
@@ -21,18 +21,21 @@ $(document).ready(function () {
 
 
     function printInput(param, prop, type) {
-        var inputText = fragmento('<div><label>' + prop + '</label>' +
+        var inputText = '<div><label>' + prop + '</label>' +
                                     '<input class=\"' + param +
                                     '\" name=\"' + prop +
-                                    '\"type=\"' + type + '\"/></div>');
+                                    '\" type=\"' + type + '\"/></div>';
         console.log("inputText: " + inputText);
-
-        function fragmento(html) {
+        $("#schemainput").append(inputText);
+/*        function fragmento(html) {
             var inputFrag = $(document.createDocumentFragment());
             console.log("inputFrag: " + inputFrag);
-            return $(inputFrag).append(html);
+            var newFrag = $(inputFrag).append(html);
+            console.log("newFrag: " + newFrag);
+            return newFrag;
         };
-    };
+  */
+   };
 
 
     //printForm()param
@@ -59,6 +62,7 @@ $(document).ready(function () {
             } else {
                 console.log("k - " + k + ": " + "v - " + v);
                 printInput(param, k, v);
+
             }
         }
     }
