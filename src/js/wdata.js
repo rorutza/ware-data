@@ -8,6 +8,7 @@ $(document).ready(function () {
         var selected_schema = $( "#selectschema option:selected" ).val();
         console.log("Selected Schema: " + selected_schema);
         printSchema(selected_schema);
+        printForm(selected_schema);
     });
 
     //printForm
@@ -18,9 +19,21 @@ $(document).ready(function () {
     //type - V - type
     //class - PARAM - schema/object
 
-    function printInput(param) {
-        var inputText = fragmento("<div><label></label><input class=\"parametro\" type=\"text\"/></div>");
+
+    function printInput(param, prop, type) {
+        var inputText = fragmento('<div><label>' + prop + '</label>' +
+                                    '<input class=\"' + param +
+                                    '\" name=\"' + prop +
+                                    '\"type=\"' + type + '\"/></div>');
+        console.log("inputText: " + inputText);
+
+        function fragmento(html) {
+            var inputFrag = document.createDocumentFragment();
+            console.log("inputFrag: " + inputFrag);
+            return inputFrag.append(html);
+        };
     };
+
 
     //printForm()param
     //param - selected Schema
@@ -35,7 +48,7 @@ $(document).ready(function () {
         for(var k in s) {
             var v = s[k];
             if(v instanceof Array) {
-                console.log("k - " + k + ": [" + + "]"); //
+                console.log("k - " + k + ": [");
                 for(var j = 0; j < v.length; ++j) {
                     console.log("j - " + j);
                     console.log("v[j] - " + v[j] + ": {");
@@ -45,6 +58,7 @@ $(document).ready(function () {
                 console.log("]");
             } else {
                 console.log("k - " + k + ": " + "v - " + v);
+                printInput(param, k, v);
             }
         }
     }
