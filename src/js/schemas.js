@@ -105,7 +105,7 @@ function printSchema(param) {
     }
 }
 
-printSchema("Article");
+//printSchema("Article");
 
 //testType(schemas["Article"]["name"]); // text
 //testType(schemas["Article"]["author"]); // object

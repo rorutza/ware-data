@@ -28,7 +28,7 @@ $(document).ready(function () {
         console.log("inputText: " + inputText);
 
         function fragmento(html) {
-            var inputFrag = document.createDocumentFragment();
+            var inputFrag = $(document.createDocumentFragment());
             console.log("inputFrag: " + inputFrag);
             return $(inputFrag).append(html);
         };
