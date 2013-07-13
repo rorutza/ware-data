@@ -4,12 +4,20 @@ $(document).ready(function () {
     //debbug -- selected_schema: "Article"
     //testType(schemas[selected_schema]); -- Type of [object Object] is object! Is Array: false
 
-    $("form").on("change", "select#selectschema", function() {
-        var selected_schema = $( "#selectschema option:selected" ).val();
+    var schema_input = $("#schemainput");
+    var form = $("form");
+    var out_printInput;
+
+    form.on("change", "select#selectschema", function() {
+        var selected_schema = $(this).val();
         console.log("Selected Schema: " + selected_schema);
         //printSchema(selected_schema);
-        printForm(selected_schema);
-       });
+        schema_input.children().remove();
+        if ("none" != selected_schema) {
+            printForm(selected_schema);
+        }
+    });
+
 
     //printForm
     //Array - multiple options
@@ -18,39 +26,6 @@ $(document).ready(function () {
     //name - K - propiedad
     //type - V - type
     //class - PARAM - schema/object
-
-
-    function printInput(param, prop, type) {
-        var inputText = '<div><label>' + prop + '</label>' +
-                                    '<input class=\"' + param +
-                                    '\" name=\"' + prop +
-                                    '\" type=\"' + type + '\"/></div>';
-        console.log("inputText: " + inputText);
-        $("#schemainput").append(inputText);
-/*        function fragmento(html) {
-            var inputFrag = $(document.createDocumentFragment());
-            console.log("inputFrag: " + inputFrag);
-            var newFrag = $(inputFrag).append(html);
-            console.log("newFrag: " + newFrag);
-            return newFrag;
-        };
-  */
-   };
-
-    function printRadio(param, prop) {
-        var inputRadio = '<div><label>' + param + '</label><input class=\"' +
-            prop + '\" name=\"' + param + '\" value=\"' +
-            param + '\"type=\"radio\"></input></div>';
-        console.log("inputRadio: " + inputRadio);
-        $("#schemainput").append(inputRadio);
-    };
-
-    function printInfo(param) {
-        var inputText = '<div>' + param + '</div>';
-        console.log("printInfo: " + inputText);
-        $("#schemainput").append(inputText);
-    };
-
 
     //printForm()param
     //param - selected Schema
@@ -61,28 +36,76 @@ $(document).ready(function () {
     function printForm(param) {
         printInfo(param);
         var s = schemas[param]; // s - [object Object]
-        console.log("printForm input param: " + param);
+        console.log("###printForm - schema:" + param);
         for(var k in s) {
             var v = s[k];
+            console.log("type = v = s[k] = " + v)
             if(v instanceof Array) {
                 printInfo(k);
                 console.log("k - " + k + ": [");
                 for(var j = 0; j < v.length; ++j) {
                     console.log("j - " + j);
                     console.log("v[j] - " + v[j] + ": {");
-                    printRadio(v[j],k);
+                    printRadio(param,v[j],k);
                     console.log("}");
-
                 }
+                printRadio(param,"text",k);
                 console.log("]");
             } else {
                 console.log("k - " + k + ": " + "v - " + v);
-                printInput(param, k, v);
-
+                printInput(param,k,v);
             }
         }
-    }
 
+        //prop, type, k, v can be used directly in form print
+        //problems with "text" - remembers last value
+
+        function printInput(param, prop, type) {
+            var inputText = '<div><label>' + prop + '</label>' +
+                '<input class=\"' + param +
+                '\" name=\"' + prop +
+                '\" type=\"' + type + '\"/></div>';
+            console.log("###inputText: " + inputText);
+            schema_input.append(inputText);
+        }
+
+        function printRadio(param, prop, radio) { //param-schema, prop-itemprop. radio-value
+            var inputRadio = '<div><label>- ' + prop + '</label><input class=\"' +
+                param + '\" name=\"' + radio + '\" value=\"' +
+                prop + '\" type=\"radio\"></input></div>';
+            console.log("###inputRadio: " + inputRadio);
+            $(schema_input).children(":last-child").append(inputRadio);
+        }
+
+        function printInfo(param) {
+            var inputText = '<div>' + param + '</div>';
+            console.log("###printInfo: " + inputText);
+            schema_input.append(inputText);
+        }
+
+        out_printInput = printInput;
+
+    };
+
+    form.on("change", "input[type='radio']", function() {
+        var selected_radio = $(this).val(); //Selected schema
+
+        console.log("###Selected Radio: " + selected_radio);
+        if ("text" != selected_radio) {
+            printForm(selected_radio);
+        } else {
+            console.log("###className of this when text = " + this.className);
+            out_printInput(this.className,this.name,this.value);
+        }
+    });
+    /*        function fragmento(html) {
+     var inputFrag = $(document.createDocumentFragment());
+     console.log("inputFrag: " + inputFrag);
+     var newFrag = $(inputFrag).append(html);
+     console.log("newFrag: " + newFrag);
+     return newFrag;
+     };
+     */
 
     /*
     udata - schema
@@ -149,31 +172,31 @@ $(document).ready(function () {
 
         inpid.after(scrie);
 
-        divdata.append(divscope(idemprop));
+        //divdata.append(divscope(idemprop));
 
         //    <div itemscope itemtype="http://schema.org/Person">
     });
 
-    $("form").on("click", "button.delete-parent", function() {
+    form.on("click", "button.delete-parent", function() {
        $(this).parent().remove();
        theclicks.delclick();
        if (console.log) {
            console.log('Clicked X - delclicks = ' + theclicks.getClicks() + ' vegades!');
        }
     });
-    $("form").on("change","input",function () {
-        var itemtype = this.className;
-        var itemprop = this.name;
-        var itemval = this.value;
+    form.on("change","input",function () {
+        var itemtype = this.className;       //ok
+        var itemprop = this.name;                //ok
+        var itemval = this.value;                    //ok
 
             if (console.log) {
-                console.log('itemtype = ' + itemtype + ' --- ');
-                console.log('itemprop = ' + itemprop + ' --- ');
+                console.log('itemtype = ' + itemtype);
+                console.log('itemprop = ' + itemprop);
                 console.log('itemval = ' + itemval);
                 //console.log('meta.itemtype.itemprop = ' + meta.itemtype.itemprop);
             }
 
-        divdata.append(spanprop(itemprop,itemval));
+        //divdata.append(spanprop(itemprop,itemval));
 
 /*            var dl = $("#properties");
             var dt = dl.append($('<dt>' + itemprop + '</dt>'));
