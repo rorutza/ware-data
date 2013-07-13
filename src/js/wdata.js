@@ -37,9 +37,17 @@ $(document).ready(function () {
   */
    };
 
+    function printRadio(param, prop) {
+        var inputRadio = '<div><label>' + param + '</label><input class=\"' +
+            prop + '\" name=\"' + param + '\" value=\"' +
+            param + '\"type=\"radio\"></input></div>';
+        console.log("inputRadio: " + inputRadio);
+        $("#schemainput").append(inputRadio);
+    };
+
     function printInfo(param) {
         var inputText = '<div>' + param + '</div>';
-        console.log("inputText: " + inputText);
+        console.log("printInfo: " + inputText);
         $("#schemainput").append(inputText);
     };
 
@@ -51,18 +59,20 @@ $(document).ready(function () {
     //v[] - Schema if type object
 
     function printForm(param) {
-
+        printInfo(param);
         var s = schemas[param]; // s - [object Object]
         console.log("printForm input param: " + param);
         for(var k in s) {
             var v = s[k];
             if(v instanceof Array) {
+                printInfo(k);
                 console.log("k - " + k + ": [");
                 for(var j = 0; j < v.length; ++j) {
                     console.log("j - " + j);
                     console.log("v[j] - " + v[j] + ": {");
-                    printForm(v[j]);
+                    printRadio(v[j],k);
                     console.log("}");
+
                 }
                 console.log("]");
             } else {
