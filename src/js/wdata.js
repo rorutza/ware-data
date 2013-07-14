@@ -4,17 +4,16 @@ $(document).ready(function () {
     //debbug -- selected_schema: "Article"
     //testType(schemas[selected_schema]); -- Type of [object Object] is object! Is Array: false
 
-    var schema_input = $("#schemainput");
     var form = $("form");
-    var out_printInput;
 
     form.on("change", "select#selectschema", function() {
+        var schema_input = $("#schemainput");
         var selected_schema = $(this).val();
         console.log("Selected Schema: " + selected_schema);
         //printSchema(selected_schema);
         schema_input.children().remove();
         if ("none" != selected_schema) {
-            printForm(selected_schema);
+            printForm.call(schema_input, selected_schema);
         }
     });
 
@@ -34,57 +33,56 @@ $(document).ready(function () {
     //v[] - Schema if type object
 
     function printForm(param) {
-        printInfo(param);
+        var schema_input = $(this);
+        printInfo.call(schema_input, param);
         var s = schemas[param]; // s - [object Object]
         console.log("###printForm - schema:" + param);
         for(var k in s) {
             var v = s[k];
             console.log("type = v = s[k] = " + v)
             if(v instanceof Array) {
-                printInfo(k);
+                printInfo.call(schema_input, k);
                 console.log("k - " + k + ": [");
                 for(var j = 0; j < v.length; ++j) {
                     console.log("j - " + j);
                     console.log("v[j] - " + v[j] + ": {");
-                    printRadio(param,v[j],k);
+                    printRadio.call(schema_input, param,v[j],k);
                     console.log("}");
                 }
-                printRadio(param,"text",k);
+                printRadio.call(schema_input, param,"text",k);
                 console.log("]");
             } else {
                 console.log("k - " + k + ": " + "v - " + v);
-                printInput(param,k,v);
+                printInput.call(schema_input, param, k, v);
             }
         }
 
         //prop, type, k, v can be used directly in form print
         //problems with "text" - remembers last value
 
-        function printInput(param, prop, type) {
-            var inputText = '<div><label>' + prop + '</label>' +
-                '<input class=\"' + param +
-                '\" name=\"' + prop +
-                '\" type=\"' + type + '\"/></div>';
-            console.log("###inputText: " + inputText);
-            schema_input.append(inputText);
-        }
 
-        function printRadio(param, prop, radio) { //param-schema, prop-itemprop. radio-value
-            var inputRadio = '<div><label>- ' + prop + '</label><input class=\"' +
-                param + '\" name=\"' + radio + '\" value=\"' +
-                prop + '\" type=\"radio\"></input></div>';
-            console.log("###inputRadio: " + inputRadio);
-            $(schema_input).children(":last-child").append(inputRadio);
-        }
+    };
+    function printInput(param, prop, type) {
+        var inputText = '<div><label>' + prop + '</label>' +
+            '<input class=\"' + param +
+            '\" name=\"' + prop +
+            '\" type=\"' + type + '\"/></div>';
+        console.log("###inputText: " + inputText);
+        $(this).append(inputText);
+    };
 
-        function printInfo(param) {
-            var inputText = '<div>' + param + '</div>';
-            console.log("###printInfo: " + inputText);
-            schema_input.append(inputText);
-        }
+    function printRadio(param, prop, radio) { //param-schema, prop-itemprop. radio-value
+        var inputRadio = '<div><label>- ' + prop + '</label><input class=\"' +
+            param + '\" name=\"' + radio + '\" value=\"' +
+            prop + '\" type=\"radio\"></input></div>';
+        console.log("###inputRadio: " + inputRadio);
+        $(this).children(":last-child").append(inputRadio);
+    };
 
-        out_printInput = printInput;
-
+    function printInfo(param) {
+        var inputText = '<div>' + param + '</div>';
+        console.log("###printInfo: " + inputText);
+        $(this).append(inputText);
     };
 
     form.on("change", "input[type='radio']", function() {
@@ -92,10 +90,10 @@ $(document).ready(function () {
 
         console.log("###Selected Radio: " + selected_radio);
         if ("text" != selected_radio) {
-            printForm(selected_radio);
+            printForm.call($(this).parent(), selected_radio);
         } else {
             console.log("###className of this when text = " + this.className);
-            out_printInput(this.className,this.name,this.value);
+            printInput.call($(this).parent(), this.className, this.name, this.value);
         }
     });
     /*        function fragmento(html) {
