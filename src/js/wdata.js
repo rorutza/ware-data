@@ -4,12 +4,11 @@ $(document).ready(function () {
     //debbug -- selected_schema: "Article"
 
     var form = $("form");
+    var divdata = $("#microudata");
 
-    form.on("change", "select#selectschema", function () {
-        //var schema_input = $("#schemainput");
+    form.on("change", "select#selectschema", function () {//var schema_input = $("#schemainput");
         var selected_schema = $(this).val();
-        console.log("Selected Schema: " + this.tagName);
-        //printSchema(selected_schema);
+        console.log("Selected Schema: " + selected_schema);
         $('fieldset:nth-child(2)').remove();
         if ("none" != selected_schema) {
             printForm.call(form, selected_schema);
@@ -29,37 +28,25 @@ $(document).ready(function () {
 
 
     function printForm(param) {
-        $(this).append('<fieldset><legend>' + param + '</legend></fieldset>');
-        console.log("###printForm: " + this.tagName);
-        var schema_input = $(this).children().last();
-        //console.log("###schema_input: " + schema_input.tagName);
-        //printInfo.call(schema_input, param);
         var s = schemas[param]; // s - [object Object]
-        //console.log("###printForm - schema:" + param);
+        $(this).append('<fieldset><legend>' + param + '</legend></fieldset>');
+        var schema_input = $(this).children().last();
+        console.log("###printForm: " + schema_input.tagName);
         for (var prop in s) {
             var type = s[prop];
-            //console.log("type = s[prop] = " + type)
             if (type instanceof Array) {
-                //schema_input.append();
                 printInfo.call(schema_input, prop);
-                //printInput.call(schema_input, param, prop, "text");
                 printRadio.call(schema_input, param, prop, "text");
-                //console.log("prop - " + prop + ": [");
                 for (var j = 0; j < type.length; ++j) {
-                    //console.log("j - " + j);
-                    //console.log("type[j] - " + type[j] + ": {");
                     printRadio.call(schema_input, param, prop, type[j]);
-                    //console.log("}");
                 }
-                //console.log("]");
             } else {
-                //console.log("prop - " + prop + ": " + "type - " + type);
                 printInput.call(schema_input, param, prop, type);
             }
         }
         //prop + type can be used directly in form print
         //problems with "text" - remembers last value
-    };
+    }
 
     function printInput(param, prop, type) {
         var inputText = '<div><label>' + prop + '</label>' +
@@ -68,7 +55,7 @@ $(document).ready(function () {
             '\" type=\"' + type + '\"/></div>';
         //console.log("###printInput: " + this.tagName);
         $(this).append(inputText);
-    };
+    }
 
     function printText(param, prop, type) {
         var inputText = '<fieldset><label>' + prop + '</label>' +
@@ -77,7 +64,7 @@ $(document).ready(function () {
             '\" type=\"' + type + '\"/></fieldset>';
         //console.log("###printInput: " + this.tagName);
         $(this).append(inputText);
-    };
+    }
 
     function printRadio(param, prop, type) { //param-schema, type-itemtype, prop-itemprop
         var inputRadio = '<div><input class=\"' +
@@ -85,13 +72,13 @@ $(document).ready(function () {
             type + '\" type=\"radio\"></input><label>- ' + type + '</label></div>';
         //console.log("###printRadio: " + this.tagName);
         $(this).children(":last-child").append(inputRadio);
-    };
+    }
 
     function printInfo(param) {
         var inputText = '<div><label>' + param + '</label></div>';
         //console.log("###printInfo: " + this.tagName);
         $(this).append(inputText);
-    };
+    }
 
     form.on("change", "input[type='radio']", function () {
         var selected_radio = $(this).val(); //Selected schema
@@ -99,18 +86,17 @@ $(document).ready(function () {
         console.log("###Remove Radio Selection of:" + $(this).parent().parent().tagName);
         $(this).parent().siblings("fieldset").remove();
         console.log("###Selected Radio: class=" + this.className + " name=" + this.name + " value=" + this.value);
-        if ("text" != selected_radio) {
-            printForm.call($(this).parent().parent(), selected_radio);
-        } else {
+        //noinspection ConstantOnLefSideOfComparisonJS
+        if ("text" == selected_radio) {
             printText.call($(this).parent().parent(), this.className, this.name, this.value);
+        } else {
+            printForm.call($(this).parent().parent(), selected_radio);
         }
     });
 
     /*
      udata - schema
      */
-
-    var divdata = $("#microudata");
 
     //Myclicks - constructor - controlling the number of clicks
 
@@ -132,16 +118,10 @@ $(document).ready(function () {
 
     var theclicks = new Myclicks();
 
-
     $("#makeaut").click(function () {
         //input dupa id
-        theclicks.newclick();
         var inpid = $("#makeaut");
         var idemprop = this.name;
-        if (console.log) {
-            console.log('Clicked ADD - newclicks = ' + theclicks.getClicks() + ' vegades!');
-            console.log('New idemscope = ' + idemprop);
-        }
         var scrie = '<fieldset id=\"author-' + theclicks.getClicks() + '\"><legend class = \"person\">author:</legend>'
             + '<label>name:</label> <input class = \"person\" name = \"name\" type = \"text\"/><br>'
             + '<label>email:</label> <input class = \"person\" name = \"email\" type = \"text\"/><br>'
@@ -149,10 +129,15 @@ $(document).ready(function () {
             + '<label>url:</label> <input class = \"person\" name = \"url\" type = \"url\"/><br>'
             + '<button type=\"button\" class=\"button delete-parent\">X</button></fieldset>';
 
+        theclicks.newclick();
+
+        if (console.log) {
+            console.log('Clicked ADD - newclicks = ' + theclicks.getClicks() + ' vegades!');
+            console.log('New idemscope = ' + idemprop);
+        }
+
         inpid.after(scrie);
-
         //divdata.append(divscope(idemprop));
-
         //    <div itemscope itemtype="http://schema.org/Person">
     });
 

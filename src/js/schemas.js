@@ -42,14 +42,31 @@ registerSchema("Person", {
     "name": "text",
     "email": "email",
     "telephone": "number",
-    "url" : "url"
+    "url": "url"
+});
+
+registerSchema("Place", {
+    "name": "text",
+    "address": "PostalAddress",
+    "telephone": "number",
+    "map": "url"
+});
+
+registerSchema("PostalAddress", {
+    "addressCountry": "text",
+    "addressLocality": "text",
+    "addressRegion": "text",
+    "postalCode": "text",
+    "postOfficeBoxNumber": "text",
+    "streetAddress": "text"
 });
 
 registerSchema("Organization", {
     "name": "text",
     "email": "email",
     "telephone": "number",
-    "url" : "url"
+    "url": "url",
+    "address": ["PostalAddress"]
 });
 
 registerSchema("Article", {
@@ -57,10 +74,10 @@ registerSchema("Article", {
     "about": "text",
     "dateCreated": "date",
     "wordCount": "number",
-    "author" : ["Person", "Organization"]
+    "author": ["Person", "Organization"]
 });
 
-registerSchema ("Movie", {
+registerSchema("Movie", {
     "name": "text",
     "about": "text",
     "dateCreated": "date",
@@ -70,13 +87,23 @@ registerSchema ("Movie", {
     "actor": ["Person"]
 });
 
-registerSchema ("Painting", {
+registerSchema("Painting", {
     "name": "text",
     "description": "text",
     "dateCreated": "date",
     "image": "url",
     "offers": ["Offer"],
     "author": ["Person"]
+});
+
+registerSchema("Event", {
+    "name": "text",
+    "description": "text",
+    "startDate": "date",
+    "endDate": "date",
+    "location": ["Place", "PostalAddress"],
+    "attendee": ["Person", "Organization"],
+    "subEvent": ["Event"]
 });
 
 function testType(param) {
@@ -88,11 +115,11 @@ function testType(param) {
 function printSchema(param) {
     var s = schemas[param]; // s - [object Object]
     console.log("printSchema input param: " + param);
-    for(var k in s) {
+    for (var k in s) {
         var v = s[k];
-        if(v instanceof Array) {
+        if (v instanceof Array) {
             console.log("k - " + k + ": [");
-            for(var j = 0; j < v.length; ++j) {
+            for (var j = 0; j < v.length; ++j) {
                 console.log("j - " + j);
                 console.log("v[j] - " + v[j] + ": {");
                 printSchema(v[j]);
@@ -115,22 +142,22 @@ function printSchema(param) {
 //testType(schemas.Article);
 
 /*
-var test1 = schemas["Article"];
-var test2 = schemas.Article;
-if (test1 === test2) {console.log("E acelasi lucru!")}
+ var test1 = schemas["Article"];
+ var test2 = schemas.Article;
+ if (test1 === test2) {console.log("E acelasi lucru!")}
  else {console.log("Nu inteleg!")};
-*/
+ */
 
 /*
-console.log("## Article ##");
-printSchema("Article");
+ console.log("## Article ##");
+ printSchema("Article");
 
-console.log("## Movie ##");
-printSchema("Movie");
+ console.log("## Movie ##");
+ printSchema("Movie");
 
-console.log("## Painting ##");
-printSchema("Painting");
-*/
+ console.log("## Painting ##");
+ printSchema("Painting");
+ */
 
 
 

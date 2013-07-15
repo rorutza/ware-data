@@ -1,68 +1,67 @@
 <!DOCTYPE html>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+<meta charset = "UTF-8"/>
+<meta name = "viewport" content = "initial-scale=1.0, width=device-width"/>
 <title>
     Microdata Schema.org Test</title>
-<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css"/>
-<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+<link href = "http://fonts.googleapis.com/css?family=Open+Sans" rel = "stylesheet" type = "text/css"/>
+<link href = "http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel = "stylesheet" type = "text/css">
+<link href = "http://fonts.googleapis.com/css?family=Lobster" rel = "stylesheet" type = "text/css">
+<link href = "http://fonts.googleapis.com/css?family=Source+Code+Pro" rel = "stylesheet" type = "text/css">
+<link rel = "stylesheet" href = "css/style.css" type = "text/css" media = "screen">
 
-<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script type = "text/javascript" src = "js/jquery-1.9.1.js"></script>
 
-<script type="text/javascript" src="js/schemas.js"></script>
-<script type="text/javascript" src="js/wdata.js"></script>
-<style type="text/css">.recentcomments a {
-    display: inline !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}</style>
+<script type = "text/javascript" src = "js/schemas.js"></script>
+<script type = "text/javascript" src = "js/wdata.js"></script>
+<style type = "text/css">.recentcomments a {
+    display : inline !important;
+    padding : 0 !important;
+    margin  : 0 !important;
+    }</style>
 
 <body>
 
 
+<div id = "main" class = "clear">
 
-
-    <div id="main" class="clear">
-
-        <div id="formular">
-            <form action="#">
-                <fieldset>
-                    <legend>Schema</legend>
-                    <select id="selectschema">
-                        <option value="none"></option>
-                        <option value="Article">Article</option>
-                        <option value="Movie">Movie</option>
-                        <option value="Painting">Painting</option>
-                    </select>
-                </fieldset>
-            </form>
-        </div>
-        <!-- #formular -->
-
-        <div id="schemadata">
-            <div id="butoane">
-                <a id="push1" href="#">1</a>
-                <a id="push2" href="#">2</a>
-                <a id="push3" href="#">3</a>
-                <a id="push4" href="#">4</a>
-                <span id="write"></span>
-            </div>
-            <!-- #butoane -->
-            <div id="microudata" itemscope itemtype="http://schema.org/Article">
-
-            </div>
-            <!-- microudata -->
-        </div>
-        <!-- #schemadata -->
-
+    <div id = "formular">
+        <form action = "#">
+            <fieldset>
+                <legend>Schema</legend>
+                <select id = "selectschema">
+                    <option value = "none"></option>
+                    <option value = "Article">Article</option>
+                    <option value = "Movie">Movie</option>
+                    <option value = "Painting">Painting</option>
+                    <option value = "Event">Event</option>
+                </select>
+            </fieldset>
+        </form>
     </div>
-    <!-- #main -->
+    <!-- #formular -->
 
-    <footer id="pagefoot">
+    <div id = "schemadata">
+        <div id = "butoane">
+            <a id = "push1" href = "#">1</a>
+            <a id = "push2" href = "#">2</a>
+            <a id = "push3" href = "#">3</a>
+            <a id = "push4" href = "#">4</a>
+            <span id = "write"></span>
+        </div>
+        <!-- #butoane -->
+        <div id = "microudata" itemscope itemtype = "http://schema.org/Article">
 
-        <div id="siteinfo"><p>MicrodataSchema.org Test proudly powered by Warelet </p></div>
-        <!-- #siteinfo -->
-    </footer>
+        </div>
+        <!-- microudata -->
+    </div>
+    <!-- #schemadata -->
+
+</div>
+<!-- #main -->
+
+<footer id = "pagefoot">
+
+    <div id = "siteinfo"><p>MicrodataSchema.org Test proudly powered by Warelet </p></div>
+    <!-- #siteinfo -->
+</footer>
 </body>
