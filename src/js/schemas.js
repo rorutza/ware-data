@@ -24,10 +24,12 @@ var types = {
 
 }
 
+//the tree of schema.org
 var schemas = {
 
 };
 
+//registerSchema() - registers a new property to schema
 function registerSchema(name, schema) {
     schemas[name] = schema;
 }
@@ -112,6 +114,7 @@ function testType(param) {
     console.log("Type of " + param + " is " + x + "! Is Array: " + array);
 }
 
+//printSchema() - prints on console recursively a branch of schema
 function printSchema(param) {
     var s = schemas[param]; // s - [object Object]
     console.log("printSchema input param: " + param);
@@ -130,6 +133,7 @@ function printSchema(param) {
             console.log("k - " + k + ": " + "v - " + v);
         }
     }
+
 }
 
 //printSchema("Article");
