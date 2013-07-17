@@ -132,44 +132,29 @@ $(document).ready(function () {
         theclicks.delclick();
         console.log('Clicked X - delclicks = ' + theclicks.getClicks() + ' vegades!');
     });
-    var onchange = 0;
+
     form.on("change", "input", function () {
-        onchange++;
         var itemscope = this.className;//ok
         var itemprop = this.name;//ok
-        var itemtype = this.value; //ok
+        var itemtype = this.value;//ok
 
         console.log('itemscope = ' + itemscope);
         console.log('itemprop = ' + itemprop);
         console.log('itemtype = ' + itemtype);
 
-        console.log('item[' + this.className + '][' + this.name + '] = ' + this.value);
+        console.log('item[' + this.className + '][' + this.name + '] = ' + this.value)
+
         item[this.className][this.name] = this.value;
-
-
-        witem[onchange] = this.value;
-        console.log('witem[' + onchange + '] = ' + witem[onchange]);
-
-
     });
 
     $("#push1").on("click", function () {
-        $("#microudata").children().remove();
-        var myItem = printObject(item);
+        var myItem = printItem();
         $("#microudata").append(myItem);
     });
 
     $("#push2").on("click", function () {
-        $("#microudata").children().remove();
-        var myObject = printObject(schemas);
+        var myObject = printObject();
         $("#microudata").append(myObject);
-    });
-
-    $("#push3").on("click", function () {
-        $("#microudata").children().remove();
-        var myVector = printVector(witem);
-        $("#microudata").append(myVector);
-
     });
 
 });
