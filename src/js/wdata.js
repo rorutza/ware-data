@@ -58,6 +58,7 @@ $(document).ready(function () {
         $(this).append(inputText);
     }
 
+
     function printText(param, prop, type) {
         var inputText = '<fieldset><label>' + prop + '</label>' +
             '<input class=\"' + param +
@@ -123,14 +124,14 @@ $(document).ready(function () {
     form.on("click", "button.add-parent", function () {
         console.log('addButton parent: ' + $(this).parent().prop("tagName"));
         theclicks.newclick();
-        console.log('Clicked + - newclicks = ' + theclicks.getClicks() + ' vegades!');
+        console.log('Clicked + = ' + theclicks.getClicks() + ' vegades!');
         $(this).parent().clone().appendTo($(this).parent().parent());
     });
 
     form.on("click", "button.delete-parent", function () {
         $(this).parent().remove();
         theclicks.delclick();
-        console.log('Clicked X - delclicks = ' + theclicks.getClicks() + ' vegades!');
+        console.log('Clicked X = ' + theclicks.getClicks() + ' vegades!');
     });
 
     form.on("change", "input", function () {
@@ -143,18 +144,32 @@ $(document).ready(function () {
         console.log('itemtype = ' + itemtype);
 
         console.log('item[' + this.className + '][' + this.name + '] = ' + this.value)
-
         item[this.className][this.name] = this.value;
+        meta.push(this.value);
     });
 
     $("#push1").on("click", function () {
-        var myItem = printItem();
-        $("#microudata").append(myItem);
+        $("#buttonprint").children().remove();
+        var print = printIt(item);
+        $("#buttonprint").append(print);
     });
 
     $("#push2").on("click", function () {
-        var myObject = printObject();
-        $("#microudata").append(myObject);
+        $("#buttonprint").children().remove();
+        var print = printIt(meta);
+        $("#buttonprint").append(print);
+    });
+
+    $("#push3").on("click", function () {
+        $("#buttonprint").children().remove();
+        var print = printIt(schemas);
+        $("#buttonprint").append(print);
+    });
+
+    $("#push4").on("click", function () {
+        $("#buttonprint").children().remove();
+        var print = printDom($("#formular"));
+        $("#buttonprint").append(print);
     });
 
 });
@@ -164,7 +179,7 @@ $(document).ready(function () {
  var dl = $("#properties");
  var dt = dl.append($('<dt>' + itemprop + '</dt>'));
  //var dt = $("#" + itemprop);
- var dd = dt.next();
+ var dd = dt.next();                        printDom
  if (dd.is("dd")) {
  dd.remove();
  }

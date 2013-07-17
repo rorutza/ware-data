@@ -25,9 +25,9 @@ var types = {
 }
 
 //the tree of schema.org
-var schemas = {
-
-};
+var schemas = {};
+var item = {};
+var meta = [];
 
 //registerSchema() - registers a new property to schema
 function registerSchema(name, schema) {
@@ -135,6 +135,40 @@ function printSchema(param) {
     }
 
 }
+
+//printObject() - prints the onject schema{}
+function printIt(param) {
+    var print;
+    if (param instanceof Array) {
+        print = printVect(param);
+    } else {
+        print = printObj(param);
+    }
+    return print;
+}
+
+function printObj(param) {
+    var print = '<div>______</div>';
+    for (var obj in param) {
+        print = print + '<div>' + obj + ': {</div>';
+        for (var prop in param[obj]) {
+            print = print + '<div>\"' + prop + '\": \"' + param[obj][prop] + '\",</div>';
+        }
+        print = print + '<div>}</div>';
+    }
+    return print;
+}
+
+function printVect(param) {
+    var print = '<div>______</div>';
+    for (var j = 0; j < param.length; ++j) {
+        print = print + '<div>[' + j + '] = ' + param[j] + '</div>';
+    }
+    return print;
+}
+
+//object to save the input data
+//has the same structure as the input form
 
 //printSchema("Article");
 

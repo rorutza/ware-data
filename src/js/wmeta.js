@@ -1,29 +1,31 @@
-//printObject() - prints the onject schema{}
-function printObject() {
-    var schema = '<div>___schemas___</div>';
-    for (var obj in schemas) {
-        schema = schema + '<div>' + obj + ': {</div>';
-        for (var prop in schemas[obj]) {
-            schema = schema + '<div>\"' + prop + '\": \"' + schemas[obj][prop] + ',\"</div>';
-        }
-        schema = schema + '<div>}</div>';
-    }
-    return schema;
+function printScope(itemtype) {
+    var print = '<div itemscope itemtype=\"http://schema.org/' + itemtype + '\">' +
+        'Schema: ' + itemtype + '</div>';
+    console.log("###printScope: " + print);
+    $("#itemschema").append(print);
+}
+//var nodeNames = [];
+//var nodeValues = [];
+function printDom(param) {
+    var nodeNames = [];
+    var nodeValues = [];
+    var print = $(param).children();
+    $(print).each(function (i) {
+        //nodeNames[i] = el.nodeName;
+        //nodeValues[i] = el.name;
+        nodeNames[i] = this.name
+        nodeValues[i] = this.value;
+        print = $(print).children();
+        printDom(print)
+    });
+    consoleVect(nodeNames, "nodeNames");
+    consoleVect(nodeValues, "nodeValues");
+    //return printIt(nodeNames);
+    return printIt(nodeValues);
 }
 
-//object to save the input data
-//has the same structure as the input form
-var item = {};
-
-function printItem() {
-    var schema = '<div>___item___</div>';
-    for (var obj in item) {
-        schema = schema + '<div>' + obj + ': {</div>';
-        for (var prop in item[obj]) {
-            schema = schema + '<div>\"' + prop + '\": \"' + item[obj][prop] + '\",</div>';
-        }
-        schema = schema + '<div>}</div>';
+function consoleVect(param, nume) {
+    for (var j = 0; j < param.length; ++j) {
+        console.log(nume + '[' + j + '] = ' + param[j]);
     }
-    return schema;
 }
-

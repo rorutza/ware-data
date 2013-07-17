@@ -11,7 +11,7 @@ License URI:
 /*TODO - clean it up*/
 
 .hideit {
-    display: none;
+    display : none;
     }
 
 #gotop {
@@ -32,16 +32,28 @@ License URI:
     text-decoration : none;
     }
 
+#main > div {
+    margin : 0.2em;
+    }
+
 #formular {
-    width   : 48%;
+    width   : 30%;
     float   : left;
     display : inline-block;
     }
 
 #schemadata {
-    width   : 48%;
+    width   : 30%;
     float   : right;
     display : inline-block;
+    border  : 1px solid #078;
+    }
+
+#itemschema {
+    width   : 30%;
+    float   : right;
+    display : inline-block;
+    border  : 1px solid #078;
     }
 
 body {
