@@ -28,11 +28,11 @@ $(document).ready(function () {
     function printForm(param, itemprop) {
         var s = schemas[param]; // s - [object Object]
         //console.log('param = ' + param + ' itemprop = ' + itemprop);
-        if (param === itemprop) {
-            $(this).append('<fieldset class=\"' + param + '\"><legend>' + itemprop + '</legend></fieldset>');
-        } else {
-            $(this).append('<fieldset class=\"' + itemprop + ' ' + param + '\"><legend>' + itemprop + '</legend></fieldset>');
-        }
+        //if (param === itemprop) {
+        $(this).append('<fieldset class=\"' + param + '\"><legend>' + itemprop + '</legend></fieldset>');
+        //} else {
+        //    $(this).append('<fieldset class=\"' + itemprop + ' ' + param + '\"><legend>' + itemprop + '</legend></fieldset>');
+        //}
         item[param] = {};
         var schema_input = $(this).children().last();
         //console.log("###printForm: " + $(schema_input).prop("tagName"));
