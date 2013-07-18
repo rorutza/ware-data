@@ -167,6 +167,22 @@ function printVect(param) {
     return print;
 }
 
+function printVect(param) {
+    var print = '<div>______</div>';
+    for (var j = 0; j < param.length; ++j) {
+        print = print + '<div>[' + j + '] = ' + param[j] + '</div>';
+    }
+    return print;
+}
+
+function printTag(param) {
+    var print = '<div>______</div>';
+    for (var j = 0; j < param.length; ++j) {
+        print = print + '<div>[' + j + '] = ' + $(param[j]).prop("tagName") + '</div>';
+    }
+    return print;
+}
+
 //object to save the input data
 //has the same structure as the input form
 

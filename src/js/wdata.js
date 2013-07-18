@@ -12,7 +12,7 @@ $(document).ready(function () {
         //console.log("Selected Schema: " + selected_schema);
         $('fieldset:nth-child(2)').remove();
         if ("none" != selected_schema) {
-            printForm.call(form, selected_schema);
+            printForm.call(form, selected_schema, selected_schema);
         }
     });
 
@@ -25,9 +25,14 @@ $(document).ready(function () {
     //param - selected Schema
     //testType(schemas[selected_schema]); -- Type of [object Object] is object! Is Array: false
 
-    function printForm(param) {
+    function printForm(param, itemprop) {
         var s = schemas[param]; // s - [object Object]
-        $(this).append('<fieldset><legend>' + param + '</legend></fieldset>');
+        //console.log('param = ' + param + ' itemprop = ' + itemprop);
+        if (param === itemprop) {
+            $(this).append('<fieldset class=\"' + param + '\"><legend>' + itemprop + '</legend></fieldset>');
+        } else {
+            $(this).append('<fieldset class=\"' + itemprop + ' ' + param + '\"><legend>' + itemprop + '</legend></fieldset>');
+        }
         item[param] = {};
         var schema_input = $(this).children().last();
         //console.log("###printForm: " + $(schema_input).prop("tagName"));
@@ -60,7 +65,7 @@ $(document).ready(function () {
 
 
     function printText(param, prop, type) {
-        var inputText = '<fieldset><label>' + prop + '</label>' +
+        var inputText = '<fieldset class=\"' + param + '\"><label>' + prop + '</label>' +
             '<input class=\"' + param +
             '\" name=\"' + prop +
             '\" type=\"' + type + '\"/>' +
@@ -92,12 +97,13 @@ $(document).ready(function () {
 
     form.on("change", "input[type='radio']", function () {
         var selected_radio = $(this).val(); //Selected schema
+        var selected_prop = this.name;
         $(this).parent().siblings("fieldset").remove();
         //console.log("###Selected Radio: class=" + this.className + " name=" + this.name + " value=" + this.value);
         if ("text" == selected_radio) {
             printText.call($(this).parent().parent(), this.className, this.name, this.value);
         } else {
-            printForm.call($(this).parent().parent(), selected_radio);
+            printForm.call($(this).parent().parent(), selected_radio, selected_prop);
         }
     });
 
@@ -167,8 +173,9 @@ $(document).ready(function () {
     });
 
     $("#push4").on("click", function () {
-        $("#buttonprint").children().remove();
-        var print = printDom($("#formular"));
+        //$("#buttonprint").children().remove();
+        var schema_field = $("#formular > form > fieldset:nth-child(2)");
+        var print = printDom(schema_field);
         $("#buttonprint").append(print);
     });
 
