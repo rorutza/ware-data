@@ -6,36 +6,43 @@ function printScope(itemtype) {
 }
 
 var Itemprop = function () {
-    this.itemname = string;
-    this.itemclass = string;
-    this.itemvalue = string;
-    this.itemparents = string;
-};
-
-Itemprop.prototype.get_itemname = function () {
-    return this.itemname;
-};
-
-Itemprop.prototype.get_itemclass = function () {
-    return this.itemclass;
-};
-
-Itemprop.prototype.get_itemvalue = function () {
-    return this.itemvalue;
-};
-
-Itemprop.prototype.get_itemparents = function () {
-    return this.itemparents;
+    var itemname = "name";
+    var itemclass = "schema";
+    var itemvalue = "";
+    var itemparents = 0;
+    this.get = function (item) {
+        return this[item];
+    }
+    this.set = function (item, value) {
+        this[item] = value;
+    }
 };
 
 var nodePrint = {};
 var index = 0;
+var itemschema = $("#itemschema");
+
+//nu merge daca ai aceiasi schema ca subschema direct
+//nu face un nou div daca sunt doua schema identice unul dupa altul
 
 function printDom(param) {
     var indexx = 0;
-    var print = $(param).children();
-    $(print).each(function (i) {
-        if ($(print[i]).prop("tagName") === "INPUT") {
+    var print = $(param).find("input");
+    var printr = $(param).find("input:checked");
+    //'input[name=radioName]:checked'
+    $(printr).each(function (i) {
+        var rad = 'RADIO:' + i;
+        rad = rad + ', itemprop: ' + printr[i].name;
+        rad = rad + ', itemtype: ' + printr[i].className;
+        rad = rad + ', value: ' + printr[i].value;
+        console.log(rad);
+        if(printr[i].value !== "text") {
+            var scrie = '<div itemprop=\"' + printr[i].name + '\" itemscope itemtype=\"http://schema.org/' + printr[i].value + '\"><legend>---' + printr[i].className + ' <b>' + printr[i].name + '</b> is ' + printr[i].value + '---</legend></div>';
+        }
+        var adddiv = $('div[itemtype="http://schema.org/' + printr[i].className + '"]')
+        adddiv.append(scrie);
+    });
+        $(print).each(function (i) {
             if (print[i].type !== "radio") {
                 var scrie = '<div>_____</div>';
                 var scrie = scrie + '<div>__index: ' + index + '__</div>';
@@ -48,7 +55,21 @@ function printDom(param) {
                 } else {
                     itemlabel = "";
                 }
-                scrie = scrie + '<div> _itemschema: ' + itemlabel + '</div>';
+                scrie = scrie + '<div> _itemlabel: ' + itemlabel + '</div>';
+                if(itemlabel == "") {
+                    var itemspan = '</br><span itemprop=\"' + print[i].name + '\"><b>' + print[i].name + ': </b>' + print[i].value + '</span>';
+                    var addspan = $("#itemschema").find("legend").first();
+                    //var addspanleg = $(addspan + '> legend');
+                    console.log('== itemschema last child: ' + $(addspan).parents().first().prop("tagName") + ' with itemtype: ' + $(addspan).attr("itemtype") );
+                    addspan.append(itemspan);
+                } else {
+                    var itemspan = '</br><span itemprop=\"' + print[i].name + '\"><b>' + print[i].name + ': </b>' + print[i].value + '</span>';
+                    var addspan = $('div[itemprop="' + itemlabel + '"]');
+                    var addspanleg = $('div[itemprop="' + itemlabel + '"] > legend');
+                    console.log('!= itemschema last child: ' + $(addspan).parents().first().prop("tagName") + ' with itemtype: ' + $(addspan).attr("itemtype") );
+                    addspanleg.append(itemspan);
+                }
+
                 var j = 0;
                 do {
                     var all_parents = $(print[i]).parents("fieldset").eq(j)
@@ -67,7 +88,6 @@ function printDom(param) {
                 $("#buttonprint").append(scrie);
             }
             ++index;
-        }
         printDom(print[i]);
     });
     consoleVect(nodePrint, "nodePrint");

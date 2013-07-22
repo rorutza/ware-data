@@ -8,13 +8,18 @@ $(document).ready(function () {
     //$("#microudata").append(myObject);
 
     form.on("change", "select#selectschema", function () {//var schema_input = $("#schemainput");
-        var selected_schema = $(this).val();
+        var selected_schema = "none";
+        selected_schema = $(this).val();
         //console.log("Selected Schema: " + selected_schema);
         $('fieldset:nth-child(2)').remove();
+        $("#itemschema").children().remove();
         if ("none" != selected_schema) {
             printForm.call(form, selected_schema, selected_schema);
+            var scrie = '<div itemscope itemtype=\"http://schema.org/' + selected_schema + '\"><legend>' + selected_schema + '</legend></div>';
+            $("#itemschema").append(scrie);
         }
     });
+
 
     //printForm(PARAM)
     //Array - multiple options - input radio - type[] - itemtype
